@@ -1,0 +1,14 @@
+method: POST
+url: http://ya.ru
+params:
+  some-param: bblabla
+headers:
+  X-Some-Header: balbla blabla vla
+body: >
+  {
+    "just": "some",
+    "json": 123,
+    "object": {
+      "inner": null
+    }
+  }

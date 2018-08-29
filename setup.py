@@ -10,4 +10,8 @@ setup(
             'batman = batman.batman:main',
         ]
     },
+    install_requires=[
+        'requests >= 2.19.1',
+        'pyyaml >= 3.13',
+    ],
 )
