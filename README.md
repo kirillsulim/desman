@@ -1,2 +1,2 @@
-# batman
-Console postman analog
+# desman
+Console HTTP API tool
