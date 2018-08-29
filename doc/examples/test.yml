@@ -1,4 +1,4 @@
-method: POST
+method: get
 url: http://ya.ru
 params:
   some-param: bblabla
