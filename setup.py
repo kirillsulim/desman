@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="desman",
+    name='desman',
     version="0.1.0",
-    author="Kirill Sulim",
-    author_email="kirillsulim@gmail.com",
-    description="Console HTTP API tool",
+    url='https://github.com/kirillsulim/desman',
+    author='Kirill Sulim',
+    author_email='kirillsulim@gmail.com',
+    description='Console HTTP API tool',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     entry_points={
@@ -18,8 +19,8 @@ setup(
         'pyyaml >= 3.13',
     ],
     classifiers=(
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
     ),
 )
