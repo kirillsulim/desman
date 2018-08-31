@@ -28,3 +28,5 @@ setup(
         'Operating System :: OS Independent',
     ),
 )
+
+this brokes build
