@@ -1,7 +1,10 @@
 language: python
+sudo: false
 python:
-  - "3.6"
-  - "3.7"
+  - 3.6
+  - 3.7
+install:
+  - python setup.py install
 deploy:
   provider: pypi
   user: kirillsulim
