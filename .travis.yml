@@ -1,0 +1,8 @@
+deploy:
+  provider: pypi
+  user: kirillsulim
+  password:
+    secure: "cgABE1AC2eL+bsXYE4hbjXoK4HAFPs/0ADqwZDXlYM6MTKZP2W215uR+vxB7oAUaz7rCB0U/Fz/Q4J+vNDDIaYvIGeFR8FfQm9qg+ThuYuNeVdvgF2jXoMguabIXct8Eya0DxwKya3w+uUmv7lwWGkdpIW2l7K4C7s1kQZMSDJrOV8DbZTB135tyTakU9Z91zpq4OSkKVeZfIEYjYyqga3tS0qDj/a2HNgcFub7BnNRCzp9NGHb9F+Ve+GjvmEuLat224dlR9djRLbMB98TH92UGzCXzzLiJmVNmG80J4qWko2ociFOuc1ifg16XjhiXDFjlZtUvIWxRHCxeVzfTfvPv81VQMYGa1/A8hMF+Mw57AFxGdx6ZIcKLHhQmuQE52XOim8M02yOeCxYr84VpObMRenJcZq5hoapgcHw0EaG+gr/kEEKPpjzEVwquOPPMhgCfLCq38yaZoiR+ScpQjws8sTYN1ivfYWorchdGN/7FLO1fZrBJfmOCJlup9naxymdboBJD4X0iMZSz9HE8MF0tCajJCvisjD+/tsHQs4/pD2Jm0XGR9iXNFqV0p2ytq7gg54bi5nBzejhFGaOjbBgRN6h0GjzFBVb3mDUukucHQpFHy72LUIy2pCbRSYd5i6WuTF8OXSHhmj1D8N+zwgPBTbtMySZq+V8PZOaMbhg="
+  on:
+    branch: master
+  distributions: sdist bdist_wheel
