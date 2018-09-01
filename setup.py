@@ -17,6 +17,7 @@ setup(
     install_requires=[
         'requests >= 2.19.1',
         'pyyaml >= 3.13',
+        'Jinja2 >= 2.10'
     ],
     classifiers=(
         'Environment :: Console',

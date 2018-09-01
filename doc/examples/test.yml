@@ -1,4 +1,4 @@
-method: get
+method: {{request.method}}
 url: http://ya.ru
 params:
   some-param: bblabla
