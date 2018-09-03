@@ -1,5 +1,5 @@
-method: get
-url: http://ya.ru
+method: {{request.method}}
+url: {{request.url}}
 params:
   some-param: bblabla
 headers:

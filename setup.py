@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='desman',
-    version="0.1.1",
+    version="0.1.2",
     url='https://github.com/kirillsulim/desman',
     author='Kirill Sulim',
     author_email='kirillsulim@gmail.com',
@@ -17,6 +17,7 @@ setup(
     install_requires=[
         'requests >= 2.19.1',
         'pyyaml >= 3.13',
+        'Jinja2 >= 2.10'
     ],
     classifiers=(
         'Environment :: Console',
