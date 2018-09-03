@@ -5,24 +5,36 @@ import argparse
 from jinja2 import Template
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-s', '--status', action='store_true', help='show response status')
-parser.add_argument('-b', '--body', action='store_true', help='show response body')
-parser.add_argument('-H', '--header', action='store_true', help='show response headers')
-parser.add_argument('-e', '--environment', default=None)
-parser.add_argument('file', metavar='FILE', type=argparse.FileType('r'))
+parser.add_argument('-s', '--status', help='show response status', action='store_true')
+parser.add_argument('-b', '--body', help='show response body', action='store_true')
+parser.add_argument('-H', '--header', help='show response headers', action='store_true')
+parser.add_argument('-e', '--environment', help='use environment files', default=[], action='append')
+parser.add_argument('file', help='request file')
+
+
+def dict_merge_add(d1, d2):
+    for k, v in d1.items():
+        if k in d2:
+            d2[k] = dict_merge_add(v, d2[k])
+    d1.update(d2)
+    return d1
 
 
 class App:
+    def __init__(self):
+        self.args = None
+
     def run(self, args):
         self.args = parser.parse_args(args[1:])
         try:
-            if self.args.environment:
-                with open(self.args.environment) as env_file:
-                    env = yaml.load(env_file)
-            else:
-                env = {}
-            with self.args.file as request_file:
+            env = {}
+            for env_file_name in self.args.environment:
+                with open(env_file_name) as env_file:
+                    dict_merge_add(env, yaml.load(env_file))
+
+            with open(self.args.file) as request_file:
                 template = Template(request_file.read())
+
             request_data = yaml.load(template.render(env))
             response = self.run_request(request_data)
             self.print_response(response)
@@ -32,11 +44,11 @@ class App:
 
     def run_request(self, request_data):
         return requests.request(
-            str(request_data['method']).lower(),
-            request_data['url'],
-            params=request_data['params'],
-            headers=request_data['headers'],
-            data=request_data['body']
+            str(request_data.get('method')).lower(),
+            request_data.get('url'),
+            params=request_data.get('params'),
+            headers=request_data.get('headers'),
+            data=request_data.get('body'),
         )
 
     def print_response(self, response):
@@ -46,7 +58,7 @@ class App:
             print("> Headers:")
             for header in response.headers:
                 print(">   {}: {}".format(header, response.headers[header]))
-        if self.args.body:
+        if self.args.body and response.text:
             print()
             print(response.text)
         if not (self.args.body or self.args.status or self.args.header):
