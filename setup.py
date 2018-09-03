@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='desman',
-    version="0.1.1",
+    version="0.1.2",
     url='https://github.com/kirillsulim/desman',
     author='Kirill Sulim',
     author_email='kirillsulim@gmail.com',
