@@ -9,4 +9,4 @@ WORKDIR /app
 
 RUN python setup.py install
 
-CMD desman
+ENTRYPOINT [ "desman" ] 
