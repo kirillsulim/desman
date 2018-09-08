@@ -6,7 +6,7 @@ python:
   - "3.6"
 install:
   - python setup.py install
-  - docker build -t kirillsulim/desman:$(cat desman.version) .
+  - docker build -t kirillsulim/desman . && docker tag kirillsulim/desman kirillsulim/desman:$(cat desman.version)
 script:
   - python setup.py check
 deploy:
@@ -18,6 +18,6 @@ deploy:
       branch: master
     distributions: sdist bdist_wheel
   - provider: script
-    script: bash ./scripts/deploy/docker-push.sh $(cat desman.version)
+    script: bash ./scripts/deploy/docker-push.sh
     on:
       branch: feature/docker
