@@ -8,7 +8,7 @@ with open(path.join(project_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='desman',
-    version="0.1.2",
+    version="1.0.0",
     url='https://github.com/kirillsulim/desman',
     author='Kirill Sulim',
     author_email='kirillsulim@gmail.com',
