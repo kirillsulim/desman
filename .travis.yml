@@ -20,4 +20,4 @@ deploy:
   - provider: script
     script: bash ./scripts/deploy/docker-push.sh
     on:
-      branch: feature/docker
+      branch: master
