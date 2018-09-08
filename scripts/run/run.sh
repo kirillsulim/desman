@@ -4,7 +4,7 @@
 set -e
 
 NAME="kirillsulim/desman"
-VERSION="1.0.0"
+VERSION="latest"
 IMAGE="$NAME:$VERSION"
 
 # Setup volume mounts
