@@ -1,16 +1,23 @@
 language: python
-sudo: false
+sudo: required
+services:
+  - docker
 python:
   - "3.6"
 install:
   - python setup.py install
+  - docker build -t $DOCKER_REPOSITORY . && docker tag $DOCKER_REPOSITORY $DOCKER_REPOSITORY:$(cat desman.version)
 script:
   - python setup.py check
 deploy:
-  provider: pypi
-  user: kirillsulim
-  password:
-     secure: "CEPUw/XqUH6d1Lhkpt4TVnOHZHVsNAMRrb7PISZjAsMBOQDsupDDaEJMzq6p1JxF8h3NhynjktapGtM84H8fp7AGaUXCUQWRj//dTwNIatlUxghXXcT7Vod7fcx2tkC7ndX+RXjfS3vo29kZlRmxfoswDrCzX/p3YKh9OeLg4S5MoOKNIzFuI+lL6QMg6vE5fcMepUlJCMTG50+N3w94DacrTpqsH5J71ArlbKEwZP33+iZU8P/MMplnkNxyuXJe9g8ji5yB5UgrnBr/SPKK9usg6fla/z3S4U8KItkYgwOulkoYzdsQHsFQP9Y1yqAJ44ybHevR9P00vETJg50dgNVfhSxNSHUUfdYX8hVJYqLMEA3fbgTM72fILd9tPKHPOmzGKhyk8S3r3KcmeGtGdAqzxw/kJUviUejSSEjkoxBRYmtqY67qOAeh+MKZ5FiuAEoMB90XqtdBmzLZLxPwFPvDGMukQ/g68+l3enRhQ/PIUUJm3mkwCmYRcS5w2wRlucFJAQ4e8ABuFyZRNet0pnpE2Loz4PYaIq33my3+hUt3md8z6xU4p5Ubn5RU4P77XwHheU2tre9KnlWH5NgvhrxwVyfe5xnzo6YvkGaJZ0tDYLzeLYdOQZvsL8m/CSpunUmyWn89hs3xUQF4Zr9MZBIG4DMsiMvc+WBJgYfg38g="
-  on:
-    branch: master
-  distributions: sdist bdist_wheel
+  - provider: pypi
+    user: kirillsulim
+    password:
+      secure: "CEPUw/XqUH6d1Lhkpt4TVnOHZHVsNAMRrb7PISZjAsMBOQDsupDDaEJMzq6p1JxF8h3NhynjktapGtM84H8fp7AGaUXCUQWRj//dTwNIatlUxghXXcT7Vod7fcx2tkC7ndX+RXjfS3vo29kZlRmxfoswDrCzX/p3YKh9OeLg4S5MoOKNIzFuI+lL6QMg6vE5fcMepUlJCMTG50+N3w94DacrTpqsH5J71ArlbKEwZP33+iZU8P/MMplnkNxyuXJe9g8ji5yB5UgrnBr/SPKK9usg6fla/z3S4U8KItkYgwOulkoYzdsQHsFQP9Y1yqAJ44ybHevR9P00vETJg50dgNVfhSxNSHUUfdYX8hVJYqLMEA3fbgTM72fILd9tPKHPOmzGKhyk8S3r3KcmeGtGdAqzxw/kJUviUejSSEjkoxBRYmtqY67qOAeh+MKZ5FiuAEoMB90XqtdBmzLZLxPwFPvDGMukQ/g68+l3enRhQ/PIUUJm3mkwCmYRcS5w2wRlucFJAQ4e8ABuFyZRNet0pnpE2Loz4PYaIq33my3+hUt3md8z6xU4p5Ubn5RU4P77XwHheU2tre9KnlWH5NgvhrxwVyfe5xnzo6YvkGaJZ0tDYLzeLYdOQZvsL8m/CSpunUmyWn89hs3xUQF4Zr9MZBIG4DMsiMvc+WBJgYfg38g="
+    on:
+      branch: master
+    distributions: sdist bdist_wheel
+  - provider: script
+    script: bash ./scripts/deploy/docker-push.sh
+    on:
+      branch: master

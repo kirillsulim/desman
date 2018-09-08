@@ -112,3 +112,6 @@ dmypy.json
 # Idea
 .idea/
 *.iml
+
+# VS Code
+.vscode
