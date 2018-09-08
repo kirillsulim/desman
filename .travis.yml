@@ -6,7 +6,7 @@ python:
   - "3.6"
 install:
   - python setup.py install
-  - docker build -t kirillsulim/desman .
+  - docker build -t kirillsulim/desman:$(cat desman.version) .
 script:
   - python setup.py check
 deploy:
