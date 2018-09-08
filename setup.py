@@ -3,17 +3,19 @@ from os import path
 
 
 project_directory = path.abspath(path.dirname(__file__))
-with open(path.join(project_directory, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+
+def load_from(file_name):
+    with open(path.join(project_directory, file_name), encoding='utf-8') as f:
+        return f.read()
 
 setup(
     name='desman',
-    version="1.0.0",
+    version=load_from('desman.version').strip(),
     url='https://github.com/kirillsulim/desman',
     author='Kirill Sulim',
     author_email='kirillsulim@gmail.com',
     description='Console HTTP API tool',
-    long_description=long_description,
+    long_description=load_from('README.md'),
     long_description_content_type='text/markdown',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
@@ -28,6 +30,7 @@ setup(
         'Jinja2 >= 2.10'
     ],
     classifiers=(
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 3',
