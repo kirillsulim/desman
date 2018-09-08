@@ -1,12 +1,20 @@
 from setuptools import setup, find_packages
+from os import path
+
+
+project_directory = path.abspath(path.dirname(__file__))
+with open(path.join(project_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='desman',
-    version="0.1.2",
+    version="1.0.0",
     url='https://github.com/kirillsulim/desman',
     author='Kirill Sulim',
     author_email='kirillsulim@gmail.com',
     description='Console HTTP API tool',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     entry_points={
