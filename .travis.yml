@@ -6,7 +6,7 @@ python:
   - "3.6"
 install:
   - python setup.py install
-  - docker build -t kirillsulim/desman . && docker tag kirillsulim/desman kirillsulim/desman:$(cat desman.version)
+  - docker build -t $DOCKER_REPOSITORY . && docker tag $DOCKER_REPOSITORY $DOCKER_REPOSITORY:$(cat desman.version)
 script:
   - python setup.py check
 deploy:
