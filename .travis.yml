@@ -18,6 +18,6 @@ deploy:
       branch: master
     distributions: sdist bdist_wheel
   - provider: script
-    script: bash ./scripts/deploy/docker-push.sh
+    script: bash ./scripts/deploy/docker-push.sh $(cat desman.version)
     on:
       branch: feature/docker
