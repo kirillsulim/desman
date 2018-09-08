@@ -1,6 +1,6 @@
 # Run desman from docker container
 
-$name=""
+$name="kirillsulim/desman"
 $version="1.0.0"
 $image="$name:$version"
 

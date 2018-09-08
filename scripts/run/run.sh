@@ -3,7 +3,7 @@
 
 set -e
 
-NAME=""
+NAME="kirillsulim/desman"
 VERSION="1.0.0"
 IMAGE="$NAME:$VERSION"
 
