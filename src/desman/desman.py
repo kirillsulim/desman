@@ -29,10 +29,10 @@ class App:
         try:
             env = {}
             for env_file_name in self.args.environment:
-                with open(env_file_name) as env_file:
+                with open(env_file_name, encoding="utf-8") as env_file:
                     dict_merge_add(env, yaml.load(env_file))
 
-            with open(self.args.file) as request_file:
+            with open(self.args.file, encoding="utf-8") as request_file:
                 template = Template(request_file.read())
 
             request_data = yaml.load(template.render(env))
@@ -48,7 +48,7 @@ class App:
             request_data.get('url'),
             params=request_data.get('params'),
             headers=request_data.get('headers'),
-            data=request_data.get('body'),
+            data=request_data.get('body').encode("utf-8"),
         )
 
     def print_response(self, response):
