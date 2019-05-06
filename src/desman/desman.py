@@ -48,7 +48,7 @@ class App:
             request_data.get('url'),
             params=request_data.get('params'),
             headers=request_data.get('headers'),
-            data=request_data.get('body').encode("utf-8"),
+            data=request_data.get('body').encode("utf-8") if 'body' in request_data else None,
         )
 
     def print_response(self, response):
