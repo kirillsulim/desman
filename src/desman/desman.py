@@ -30,12 +30,12 @@ class App:
             env = {}
             for env_file_name in self.args.environment:
                 with open(env_file_name, encoding="utf-8") as env_file:
-                    dict_merge_add(env, yaml.load(env_file))
+                    dict_merge_add(env, yaml.load(env_file, Loader=yaml.BaseLoader))
 
             with open(self.args.file, encoding="utf-8") as request_file:
                 template = Template(request_file.read())
 
-            request_data = yaml.load(template.render(env))
+            request_data = yaml.load(template.render(env), Loader=yaml.BaseLoader)
             response = self.run_request(request_data)
             self.print_response(response)
         except Exception as e:
