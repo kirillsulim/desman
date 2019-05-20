@@ -53,13 +53,14 @@ class App:
 
     def print_response(self, response):
         if self.args.status:
-            print("> Status: {} {}".format(response.status_code, response.reason))
+            print("> Status: {} {}".format(response.status_code, response.reason), file=sys.stderr)
         if self.args.header:
-            print("> Headers:")
+            print("> Headers:", file=sys.stderr)
             for header in response.headers:
-                print(">   {}: {}".format(header, response.headers[header]))
+                print(">   {}: {}".format(header, response.headers[header]), file=sys.stderr)
         if self.args.body and response.text:
-            print()
+            if self.args.status or self.args.header:
+                print(file=sys.stderr)
             print(response.text)
         if not (self.args.body or self.args.status or self.args.header):
             print(response.text)
