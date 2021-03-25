@@ -16,7 +16,7 @@ sudo chmod +x /usr/local/bin/desman
 
 Default tag in script is latest. If you want to fix specific version, change corresponding variable in script.
 
-### Docken on Windows
+### Docker on Windows
 Desman can be installed as .ps1 script running docker image. 
 [Download script](https://raw.githubusercontent.com/kirillsulim/desman/master/scripts/run/run.ps1) and set required permissions.
 Default tag in script is latest. If you want to fix specific version, change corresponding variable in script.
